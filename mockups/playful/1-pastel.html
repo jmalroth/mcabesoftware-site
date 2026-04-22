@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playful 1 · Refined Pastel — McAbe Software</title>
+<style>
+  :root {
+    --bg: #fbf5ee;
+    --surface: #ffffff;
+    --ink: #2a2432;
+    --muted: #7a6f86;
+    --pink: #f4a6b4;
+    --peach: #ffc39b;
+    --sky: #9ccfea;
+    --mint: #a8dec4;
+    --butter: #ffe58a;
+    --lilac: #c7b8f0;
+    --accent: #d4638b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Nunito", "SF Pro Rounded", -apple-system, "Avenir Next Rounded", sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+  /* Background decoration */
+  .bg-shapes { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .shape { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.5; }
+  .shape.s1 { width: 300px; height: 300px; background: var(--pink); top: 80px; left: -80px; }
+  .shape.s2 { width: 260px; height: 260px; background: var(--butter); top: 40px; right: -60px; }
+  .shape.s3 { width: 340px; height: 340px; background: var(--sky); top: 50%; right: -100px; }
+  .shape.s4 { width: 200px; height: 200px; background: var(--lilac); bottom: 10%; left: 20%; }
+
+  header {
+    padding: 24px 0;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand {
+    font-weight: 800;
+    font-size: 19px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand-mark {
+    width: 36px; height: 36px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--peach) 0%, var(--pink) 100%);
+    display: grid; place-items: center;
+    color: white; font-weight: 900; font-size: 16px;
+    box-shadow: 0 4px 12px rgba(244, 166, 180, 0.4);
+  }
+  nav { display: flex; gap: 6px; }
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    transition: background .15s ease;
+  }
+  nav a:hover { background: rgba(42, 36, 50, 0.06); }
+  nav a.active { background: var(--ink); color: white; }
+
+  .hero { padding: 80px 0 64px; text-align: center; }
+  .hero .mini {
+    display: inline-block;
+    background: white;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-weight: 700; font-size: 13px;
+    color: var(--accent);
+    box-shadow: 0 4px 14px rgba(212, 99, 139, 0.15);
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(44px, 6vw, 68px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .hero h1 .hl {
+    background: linear-gradient(180deg, transparent 60%, var(--butter) 60%);
+    padding: 0 6px;
+  }
+  .hero .lede {
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: 19px;
+    max-width: 580px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  section.apps { padding: 56px 0 112px; }
+  .apps h2 {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 36px;
+    text-align: center;
+  }
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .app-card {
+    background: white;
+    border-radius: 24px;
+    padding: 26px;
+    box-shadow: 0 8px 28px rgba(42, 36, 50, 0.06);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(42, 36, 50, 0.1);
+  }
+  .icon {
+    width: 68px; height: 68px; border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  }
+  .icon svg { width: 100%; height: 100%; display: block; }
+  .app-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .app-card p { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+  .tag {
+    display: inline-block;
+    background: var(--butter);
+    color: #805500;
+    font-weight: 800;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  /* different accent per card */
+  .app-card:nth-child(1) .tag { background: var(--pink); color: #7c2244; }
+  .app-card:nth-child(2) .tag { background: var(--mint); color: #205c45; }
+  .app-card:nth-child(3) .tag { background: var(--peach); color: #7d4116; }
+  .app-card:nth-child(4) .tag { background: var(--sky); color: #1f4d6b; }
+  .app-card:nth-child(5) .tag { background: var(--lilac); color: #4a3a7e; }
+
+  footer { padding: 36px 0; text-align: center; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="bg-shapes">
+  <div class="shape s1"></div><div class="shape s2"></div>
+  <div class="shape s3"></div><div class="shape s4"></div>
+</div>
+<div class="container">
+  <header>
+    <div class="brand"><span class="brand-mark">M</span>McAbe Software</div>
+    <nav>
+      <a href="#" class="active">Apps</a>
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <span class="mini">♥ Indie iOS apps</span>
+    <h1>The kind of apps that stay on your <span class="hl">home screen</span>.</h1>
+    <p class="lede">Scorekeepers, trackers, and tools that earn their keep — built by a mom who likes to make things.</p>
+  </section>
+
+  <section class="apps">
+    <h2>Meet the apps</h2>
+    <div class="app-grid">
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#d4638b"/><text x="40" y="52" text-anchor="middle" font-family="Nunito,sans-serif" font-size="32" font-weight="900" fill="#fff">DC</text></svg></div>
+        <h3>DaCribbage</h3>
+        <p>Keep score and play classic cribbage, right on your phone.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#5aa980"/><text x="40" y="52" text-anchor="middle" font-family="Nunito,sans-serif" font-size="32" font-weight="900" fill="#fff">TT</text></svg></div>
+        <h3>TradeTracker</h3>
+        <p>Log stock and options trades by screenshot — no broker API needed.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#e08c4d"/><text x="40" y="52" text-anchor="middle" font-family="Nunito,sans-serif" font-size="32" font-weight="900" fill="#fff">C5</text></svg></div>
+        <h3>Canasta 5-Deck</h3>
+        <p>Focus on the game — let the app handle the scoring math.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#4a8db2"/><text x="40" y="52" text-anchor="middle" font-family="Nunito,sans-serif" font-size="32" font-weight="900" fill="#fff">C2</text></svg></div>
+        <h3>Canasta 2-Deck</h3>
+        <p>Classic two-deck canasta, simplified scorekeeping.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#8470c5"/><text x="40" y="52" text-anchor="middle" font-family="Nunito,sans-serif" font-size="32" font-weight="900" fill="#fff">SS</text></svg></div>
+        <h3>Spades Scoring</h3>
+        <p>Track bids, tricks, and running totals round by round.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 McAbe Software · Made with care</footer>
+</div>
+</body>
+</html>

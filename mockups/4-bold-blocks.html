@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup 4 · Bold Blocks — McAbe Software</title>
+<style>
+  :root {
+    --ink: #111111;
+    --bg: #f4f1ea;
+    --line: #111111;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+  header {
+    border-bottom: 2px solid var(--line);
+    padding: 20px 0;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand {
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  nav { display: flex; gap: 24px; }
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  nav a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  nav a.active { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+
+  .hero {
+    padding: 72px 0 72px;
+    border-bottom: 2px solid var(--line);
+  }
+  .hero h1 {
+    font-size: clamp(56px, 10vw, 148px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-meta .label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    opacity: 0.6;
+  }
+  .hero-meta .value { font-size: 17px; font-weight: 500; }
+
+  .apps-header {
+    padding: 40px 0 20px;
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+  .apps-header h2 {
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .apps-header .count {
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .app-row {
+    display: grid;
+    grid-template-columns: 60px 96px 1fr 160px;
+    align-items: center;
+    gap: 28px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: background .15s ease;
+  }
+  .app-row:hover { background: rgba(17,17,17,0.04); }
+  .app-row .num {
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+  }
+  .app-row .icon {
+    width: 88px; height: 88px;
+    border-radius: 0;
+    overflow: hidden;
+    border: 2px solid var(--ink);
+  }
+  .icon svg { width: 100%; height: 100%; display: block; }
+  .app-row .info h3 {
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .app-row .info p {
+    font-size: 16px;
+    max-width: 560px;
+  }
+  .app-row .status {
+    text-align: right;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .app-row .status .dot {
+    display: inline-block;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--ink);
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  /* Each row gets a colored icon background via child index */
+  .row-1 .icon { background: #ff5138; }
+  .row-2 .icon { background: #ffd400; }
+  .row-3 .icon { background: #00a878; }
+  .row-4 .icon { background: #2563d8; }
+  .row-5 .icon { background: #d6336c; }
+
+  footer {
+    border-top: 2px solid var(--line);
+    padding: 32px 0;
+    display: flex; justify-content: space-between;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  @media (max-width: 760px) {
+    .app-row { grid-template-columns: 40px 72px 1fr; }
+    .app-row .status { grid-column: 1 / -1; text-align: left; padding-left: 112px; }
+    .hero-meta { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="brand">McAbe Software</div>
+    <nav>
+      <a href="#" class="active">Apps</a>
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Apps that<br>earn their<br>keep.</h1>
+    <div class="hero-meta">
+      <div>
+        <div class="label">Who</div>
+        <div class="value">McAbe Software — independent iOS studio of one. Built by a mom who likes to make things.</div>
+      </div>
+      <div>
+        <div class="label">What</div>
+        <div class="value">Five hand-built iOS apps for card games, cribbage, and personal finance. The kind that stay on your home screen.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="apps-header">
+    <h2>The Apps</h2>
+    <span class="count">Five / Five</span>
+  </div>
+
+  <div class="app-row row-1">
+    <div class="num">01</div>
+    <div class="icon"><svg viewBox="0 0 80 80"><text x="40" y="55" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="36" font-weight="900" fill="#fff">DC</text></svg></div>
+    <div class="info">
+      <h3>DaCribbage</h3>
+      <p>Keep score and play classic cribbage, right on your phone.</p>
+    </div>
+    <div class="status"><span class="dot"></span>Coming Soon</div>
+  </div>
+
+  <div class="app-row row-2">
+    <div class="num">02</div>
+    <div class="icon"><svg viewBox="0 0 80 80"><text x="40" y="55" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="36" font-weight="900" fill="#111">TT</text></svg></div>
+    <div class="info">
+      <h3>TradeTracker</h3>
+      <p>Log your stock and options trades by screenshot — no broker API needed.</p>
+    </div>
+    <div class="status"><span class="dot"></span>Coming Soon</div>
+  </div>
+
+  <div class="app-row row-3">
+    <div class="num">03</div>
+    <div class="icon"><svg viewBox="0 0 80 80"><text x="40" y="55" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="36" font-weight="900" fill="#fff">C5</text></svg></div>
+    <div class="info">
+      <h3>Canasta 5-Deck Scoring</h3>
+      <p>Focus on the game — let the app handle the scoring math.</p>
+    </div>
+    <div class="status"><span class="dot"></span>Coming Soon</div>
+  </div>
+
+  <div class="app-row row-4">
+    <div class="num">04</div>
+    <div class="icon"><svg viewBox="0 0 80 80"><text x="40" y="55" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="36" font-weight="900" fill="#fff">C2</text></svg></div>
+    <div class="info">
+      <h3>Canasta 2-Deck Scoring</h3>
+      <p>Classic two-deck canasta, simplified scorekeeping.</p>
+    </div>
+    <div class="status"><span class="dot"></span>Coming Soon</div>
+  </div>
+
+  <div class="app-row row-5">
+    <div class="num">05</div>
+    <div class="icon"><svg viewBox="0 0 80 80"><text x="40" y="55" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="36" font-weight="900" fill="#fff">SS</text></svg></div>
+    <div class="info">
+      <h3>Spades Scoring</h3>
+      <p>Track bids, tricks, and running totals round by round.</p>
+    </div>
+    <div class="status"><span class="dot"></span>Coming Soon</div>
+  </div>
+
+  <footer>
+    <div>&copy; 2026 McAbe Software</div>
+    <div>All Rights Reserved</div>
+  </footer>
+</div>
+</body>
+</html>

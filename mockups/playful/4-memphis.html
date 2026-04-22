@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playful 4 · Memphis 80s — McAbe Software</title>
+<style>
+  :root {
+    --bg: #f6f1e3;
+    --paper: #fffdf4;
+    --ink: #111111;
+    --red: #ee4844;
+    --yellow: #f8d13a;
+    --blue: #2e7bd6;
+    --pink: #ff7fae;
+    --mint: #4fd9b0;
+    --muted: #6b6458;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Archivo Black", "Inter", -apple-system, sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow-x: hidden;
+  }
+  .body-font { font-family: "Inter", -apple-system, sans-serif; }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 2; }
+
+  /* Memphis decorative shapes scattered as background */
+  .memphis-bg { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  .memphis-bg svg { position: absolute; }
+  .ms1 { top: 110px; left: 30px; }
+  .ms2 { top: 220px; right: 40px; }
+  .ms3 { top: 550px; left: 10px; }
+  .ms4 { top: 700px; right: 80px; }
+  .ms5 { top: 950px; left: 40%; }
+  .ms6 { top: 1250px; left: 30px; }
+
+  header {
+    padding: 22px 0;
+    border-bottom: 3px solid var(--ink);
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--bg);
+    position: relative; z-index: 3;
+  }
+  .brand {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand-mark {
+    width: 36px; height: 36px;
+    background: var(--yellow);
+    border: 3px solid var(--ink);
+    transform: rotate(45deg);
+    position: relative;
+  }
+  .brand-mark::after {
+    content: ""; position: absolute; inset: 5px;
+    background: var(--red);
+    border-radius: 50%;
+  }
+  nav { display: flex; gap: 4px; }
+  nav a {
+    font-family: "Inter", sans-serif;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 800; font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border: 2px solid var(--ink);
+    margin-left: -2px;
+    background: var(--paper);
+    transition: background .15s ease;
+  }
+  nav a:first-child { margin-left: 0; }
+  nav a:hover { background: var(--yellow); }
+  nav a.active { background: var(--ink); color: var(--paper); }
+
+  .hero { padding: 80px 0 56px; text-align: center; position: relative; }
+  .hero h1 {
+    font-family: "Archivo Black", sans-serif;
+    font-size: clamp(48px, 8vw, 100px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    max-width: 960px; margin: 0 auto;
+  }
+  .hero h1 .y { background: var(--yellow); padding: 0 8px; display: inline-block; border: 3px solid var(--ink); }
+  .hero h1 .p { background: var(--pink); padding: 0 8px; display: inline-block; border: 3px solid var(--ink); }
+  .hero .lede {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    margin-top: 28px;
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 560px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  section.apps { padding: 72px 0 120px; position: relative; }
+  .apps-head { text-align: center; margin-bottom: 48px; }
+  .apps-head h2 {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 44px;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    display: inline-block;
+    position: relative;
+  }
+  .apps-head h2::before, .apps-head h2::after {
+    content: ""; position: absolute; top: 50%;
+    width: 60px; height: 6px;
+    background: var(--ink);
+    transform: translateY(-50%);
+  }
+  .apps-head h2::before { right: calc(100% + 24px); }
+  .apps-head h2::after { left: calc(100% + 24px); }
+
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .app-card {
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    border-radius: 0;
+    padding: 22px;
+    box-shadow: 8px 8px 0 var(--ink);
+    transition: transform .15s ease, box-shadow .15s ease;
+    position: relative;
+  }
+  .app-card:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0 var(--ink); }
+  .app-card:nth-child(1) { background: #fff0a8; }
+  .app-card:nth-child(2) { background: #ffe1eb; }
+  .app-card:nth-child(3) { background: #d7ecff; }
+  .app-card:nth-child(4) { background: #d9f5e5; }
+  .app-card:nth-child(5) { background: #ffdcc7; }
+
+  .icon {
+    width: 72px; height: 72px;
+    border: 3px solid var(--ink);
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .icon svg { width: 100%; height: 100%; display: block; }
+  .app-card h3 {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .app-card p {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .tag {
+    font-family: "Inter", sans-serif;
+    display: inline-block;
+    font-size: 12px; font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6px 12px;
+  }
+
+  footer {
+    border-top: 3px solid var(--ink);
+    padding: 24px 0;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="memphis-bg">
+  <!-- Squiggle -->
+  <svg class="ms1" width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 Q 15 2, 25 15 T 45 15 T 65 15 T 85 15" stroke="#ee4844" stroke-width="4" fill="none"/></svg>
+  <!-- Triangle -->
+  <svg class="ms2" width="60" height="60" viewBox="0 0 60 60"><polygon points="30,5 55,55 5,55" fill="#f8d13a" stroke="#111" stroke-width="3"/></svg>
+  <!-- Dots grid -->
+  <svg class="ms3" width="80" height="80" viewBox="0 0 80 80">
+    <g fill="#2e7bd6"><circle cx="10" cy="10" r="4"/><circle cx="30" cy="10" r="4"/><circle cx="50" cy="10" r="4"/><circle cx="70" cy="10" r="4"/><circle cx="10" cy="30" r="4"/><circle cx="30" cy="30" r="4"/><circle cx="50" cy="30" r="4"/><circle cx="70" cy="30" r="4"/><circle cx="10" cy="50" r="4"/><circle cx="30" cy="50" r="4"/><circle cx="50" cy="50" r="4"/><circle cx="70" cy="50" r="4"/></g>
+  </svg>
+  <!-- Zigzag -->
+  <svg class="ms4" width="80" height="40" viewBox="0 0 80 40"><polyline points="5,30 20,10 35,30 50,10 65,30 75,20" stroke="#ff7fae" stroke-width="4" fill="none" stroke-linejoin="miter"/></svg>
+  <!-- Circle outline -->
+  <svg class="ms5" width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="#4fd9b0" stroke-width="5"/></svg>
+  <!-- Plus -->
+  <svg class="ms6" width="50" height="50" viewBox="0 0 50 50"><path d="M25 5 L25 45 M5 25 L45 25" stroke="#ee4844" stroke-width="5" stroke-linecap="square"/></svg>
+</div>
+
+<div class="container">
+  <header>
+    <div class="brand"><span class="brand-mark"></span>McAbe Software</div>
+    <nav>
+      <a href="#" class="active">Apps</a>
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>The kind of apps that stay on your <span class="y">home</span> <span class="p">screen</span>.</h1>
+    <p class="lede">Scorekeepers, trackers, and tools that earn their keep — built by a mom who likes to make things.</p>
+  </section>
+
+  <section class="apps">
+    <div class="apps-head"><h2>The Apps</h2></div>
+    <div class="app-grid">
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#ee4844"/><text x="40" y="54" text-anchor="middle" font-family="Archivo Black,sans-serif" font-size="32" fill="#fff">DC</text></svg></div>
+        <h3>DaCribbage</h3>
+        <p>Keep score and play classic cribbage, right on your phone.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#2e7bd6"/><text x="40" y="54" text-anchor="middle" font-family="Archivo Black,sans-serif" font-size="32" fill="#fff">TT</text></svg></div>
+        <h3>TradeTracker</h3>
+        <p>Log stock and options trades by screenshot — no broker API needed.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#f8d13a"/><text x="40" y="54" text-anchor="middle" font-family="Archivo Black,sans-serif" font-size="32" fill="#111">C5</text></svg></div>
+        <h3>Canasta 5-Deck</h3>
+        <p>Focus on the game — let the app handle the scoring math.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#4fd9b0"/><text x="40" y="54" text-anchor="middle" font-family="Archivo Black,sans-serif" font-size="32" fill="#111">C2</text></svg></div>
+        <h3>Canasta 2-Deck</h3>
+        <p>Classic two-deck canasta, simplified scorekeeping.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#ff7fae"/><text x="40" y="54" text-anchor="middle" font-family="Archivo Black,sans-serif" font-size="32" fill="#fff">SS</text></svg></div>
+        <h3>Spades Scoring</h3>
+        <p>Track bids, tricks, and running totals round by round.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 McAbe Software · Loud & Proud</footer>
+</div>
+</body>
+</html>

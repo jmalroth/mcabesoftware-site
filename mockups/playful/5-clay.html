@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playful 5 · Clay — McAbe Software</title>
+<style>
+  :root {
+    --bg: #ecebfb;
+    --surface: #f3f2ff;
+    --ink: #2d2a4a;
+    --muted: #6f6a94;
+    --pink: #ffb3c1;
+    --peach: #ffcca3;
+    --mint: #b5e8c8;
+    --sky: #b3d8ff;
+    --lilac: #d3c1ff;
+    --accent: #7c6df0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "SF Pro Rounded", -apple-system, "Nunito", sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+
+  /* Clay / neumorphic shadow utilities */
+  .clay {
+    background: var(--surface);
+    border-radius: 22px;
+    box-shadow:
+      10px 10px 24px rgba(125, 115, 180, 0.22),
+      -6px -6px 16px rgba(255, 255, 255, 0.9),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+  .clay-small {
+    background: var(--surface);
+    border-radius: 16px;
+    box-shadow:
+      6px 6px 14px rgba(125, 115, 180, 0.18),
+      -4px -4px 10px rgba(255, 255, 255, 0.9);
+  }
+  .clay-pill {
+    background: var(--surface);
+    border-radius: 999px;
+    box-shadow:
+      5px 5px 12px rgba(125, 115, 180, 0.2),
+      -3px -3px 8px rgba(255, 255, 255, 0.9);
+  }
+
+  header {
+    padding: 28px 0;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 14px;
+    font-weight: 900;
+    font-size: 19px;
+  }
+  .brand-mark {
+    width: 44px; height: 44px;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #8b7bff 0%, #6b5cea 100%);
+    box-shadow:
+      6px 6px 12px rgba(108, 92, 234, 0.35),
+      inset 2px 2px 4px rgba(255,255,255,0.25),
+      inset -2px -2px 4px rgba(0,0,0,0.1);
+  }
+  nav {
+    padding: 6px;
+    display: flex; gap: 2px;
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    transition: color .15s ease;
+  }
+  nav a:hover { color: var(--ink); }
+  nav a.active {
+    color: white;
+    background: linear-gradient(145deg, #8b7bff, #6b5cea);
+    box-shadow:
+      4px 4px 10px rgba(108, 92, 234, 0.3),
+      inset 2px 2px 3px rgba(255,255,255,0.2),
+      inset -2px -2px 3px rgba(0,0,0,0.08);
+  }
+
+  .hero { padding: 88px 0 64px; text-align: center; }
+  .hero .kicker {
+    display: inline-flex;
+    align-items: center; gap: 8px;
+    padding: 8px 18px;
+    font-weight: 800; font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(44px, 6.5vw, 72px);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+    max-width: 920px; margin: 0 auto;
+  }
+  .hero h1 .pill-word {
+    display: inline-block;
+    padding: 2px 22px;
+    border-radius: 999px;
+    background: linear-gradient(145deg, #ffb3c1, #ff7fa0);
+    color: white;
+    box-shadow:
+      8px 8px 18px rgba(255, 127, 160, 0.35),
+      inset 2px 2px 4px rgba(255,255,255,0.3),
+      inset -2px -2px 4px rgba(0,0,0,0.08);
+  }
+  .hero .lede {
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 19px;
+    max-width: 580px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  section.apps { padding: 56px 0 112px; }
+  .apps-head { text-align: center; margin-bottom: 48px; }
+  .apps-head h2 { font-size: 36px; font-weight: 900; letter-spacing: -0.02em; }
+  .apps-head .sub { color: var(--muted); margin-top: 6px; }
+
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+  }
+  .app-card {
+    padding: 26px;
+    transition: transform .2s ease;
+  }
+  .app-card:hover { transform: translateY(-4px); }
+  .icon-wrap {
+    width: 84px; height: 84px;
+    border-radius: 24px;
+    margin-bottom: 18px;
+    display: grid; place-items: center;
+    padding: 10px;
+  }
+  .icon-wrap.c1 { background: linear-gradient(145deg, #ffb3c1, #ff8fa5); box-shadow: 8px 8px 16px rgba(255,143,165,.35), inset 2px 2px 4px rgba(255,255,255,.3), inset -2px -2px 4px rgba(0,0,0,.08); }
+  .icon-wrap.c2 { background: linear-gradient(145deg, #b3d8ff, #7cb6f5); box-shadow: 8px 8px 16px rgba(124,182,245,.35), inset 2px 2px 4px rgba(255,255,255,.3), inset -2px -2px 4px rgba(0,0,0,.08); }
+  .icon-wrap.c3 { background: linear-gradient(145deg, #ffcca3, #ff9f6a); box-shadow: 8px 8px 16px rgba(255,159,106,.35), inset 2px 2px 4px rgba(255,255,255,.3), inset -2px -2px 4px rgba(0,0,0,.08); }
+  .icon-wrap.c4 { background: linear-gradient(145deg, #b5e8c8, #7ed29c); box-shadow: 8px 8px 16px rgba(126,210,156,.35), inset 2px 2px 4px rgba(255,255,255,.3), inset -2px -2px 4px rgba(0,0,0,.08); }
+  .icon-wrap.c5 { background: linear-gradient(145deg, #d3c1ff, #a68fff); box-shadow: 8px 8px 16px rgba(166,143,255,.35), inset 2px 2px 4px rgba(255,255,255,.3), inset -2px -2px 4px rgba(0,0,0,.08); }
+  .icon-glyph {
+    color: white;
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+  }
+  .app-card h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .app-card p { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
+  .pill-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 14px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="brand"><span class="brand-mark"></span>McAbe Software</div>
+    <nav class="clay-pill">
+      <a href="#" class="active">Apps</a>
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <span class="kicker clay-pill">✨ Indie iOS apps</span>
+    <h1>The kind of apps that stay on your <span class="pill-word">home screen</span>.</h1>
+    <p class="lede">Scorekeepers, trackers, and tools that earn their keep — built by a mom who likes to make things.</p>
+  </section>
+
+  <section class="apps">
+    <div class="apps-head">
+      <h2>Meet the apps</h2>
+      <p class="sub">Soft. Simple. Still useful.</p>
+    </div>
+    <div class="app-grid">
+      <article class="app-card clay">
+        <div class="icon-wrap c1"><span class="icon-glyph">DC</span></div>
+        <h3>DaCribbage</h3>
+        <p>Keep score and play classic cribbage, right on your phone.</p>
+        <span class="pill-tag clay-pill">Coming Soon</span>
+      </article>
+      <article class="app-card clay">
+        <div class="icon-wrap c2"><span class="icon-glyph">TT</span></div>
+        <h3>TradeTracker</h3>
+        <p>Log stock and options trades by screenshot — no broker API needed.</p>
+        <span class="pill-tag clay-pill">Coming Soon</span>
+      </article>
+      <article class="app-card clay">
+        <div class="icon-wrap c3"><span class="icon-glyph">C5</span></div>
+        <h3>Canasta 5-Deck</h3>
+        <p>Focus on the game — let the app handle the scoring math.</p>
+        <span class="pill-tag clay-pill">Coming Soon</span>
+      </article>
+      <article class="app-card clay">
+        <div class="icon-wrap c4"><span class="icon-glyph">C2</span></div>
+        <h3>Canasta 2-Deck</h3>
+        <p>Classic two-deck canasta, simplified scorekeeping.</p>
+        <span class="pill-tag clay-pill">Coming Soon</span>
+      </article>
+      <article class="app-card clay">
+        <div class="icon-wrap c5"><span class="icon-glyph">SS</span></div>
+        <h3>Spades Scoring</h3>
+        <p>Track bids, tricks, and running totals round by round.</p>
+        <span class="pill-tag clay-pill">Coming Soon</span>
+      </article>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 McAbe Software · Made with care</footer>
+</div>
+</body>
+</html>

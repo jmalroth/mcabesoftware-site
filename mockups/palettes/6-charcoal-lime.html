@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palette 6 · Charcoal Lime — McAbe Software</title>
+<style>
+  :root {
+    --bg: #1e2128;
+    --surface: #2a2e38;
+    --blob-1: #3a3f4d;
+    --blob-2: #2a3540;
+    --blob-3: #3d3a2a;
+    --ink: #f4f5f2;
+    --muted: #9ea3b0;
+    --accent: #c5f24d;
+    --accent2: #f2c94d;
+    --tag-bg: rgba(197,242,77,0.18);
+    --tag-text: #c5f24d;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: "SF Pro Rounded", -apple-system, "Nunito", "Avenir Next", sans-serif; font-size: 17px; line-height: 1.55; overflow-x: hidden; min-height: 100vh; }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+  .bg-blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.55; }
+  .blob.b1 { width: 460px; height: 460px; background: var(--blob-1); top: -160px; left: -140px; }
+  .blob.b2 { width: 400px; height: 400px; background: var(--blob-2); top: 220px; right: -140px; }
+  .blob.b3 { width: 340px; height: 340px; background: var(--blob-3); bottom: -100px; left: 30%; }
+  header { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; }
+  .brand { font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 10px; }
+  .brand .pill { display: inline-block; width: 34px; height: 22px; background: var(--accent); border-radius: 999px; position: relative; }
+  .brand .pill::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: var(--bg); border-radius: 50%; }
+  nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 15px; padding: 8px 14px; border-radius: 999px; margin-left: 6px; }
+  nav a:hover, nav a.active { background: rgba(255,255,255,0.08); color: var(--ink); }
+  .hero { padding: 72px 0 56px; text-align: center; }
+  .hero h1 { font-size: clamp(42px, 6.5vw, 72px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.04; max-width: 900px; margin: 0 auto; }
+  .hero h1 span.wiggle { display: inline-block; background: var(--accent); color: var(--bg); padding: 2px 18px; border-radius: 999px; transform: rotate(-2deg); }
+  .hero .lede { margin-top: 24px; font-size: 19px; color: var(--muted); max-width: 600px; margin-left: auto; margin-right: auto; }
+  .hero .sticker { display: inline-block; margin-bottom: 20px; background: var(--surface); padding: 8px 16px; border-radius: 999px; font-weight: 700; font-size: 13px; color: var(--accent); box-shadow: 0 8px 20px rgba(0,0,0,0.3); transform: rotate(-3deg); border: 1px solid rgba(197,242,77,0.25); }
+  section.apps { padding: 48px 0 112px; }
+  .apps-head { text-align: center; margin-bottom: 28px; }
+  .apps-head h2 { font-size: 32px; font-weight: 900; letter-spacing: -0.02em; }
+  .apps-head .wave { margin: 12px auto 0; width: 80px; height: 6px; background: var(--accent); border-radius: 999px; }
+  .category { margin-top: 32px; }
+  .category-label { text-align: center; font-weight: 800; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+  .category-label::before, .category-label::after { content: "•"; margin: 0 10px; color: var(--muted); }
+  .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .app-card { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 26px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform .2s ease, border-color .2s ease; position: relative; }
+  .app-card:hover { transform: translateY(-6px) rotate(-0.5deg); border-color: rgba(197,242,77,0.3); }
+  .app-card:nth-child(2n) .icon { transform: rotate(4deg); }
+  .app-card:nth-child(3n) .icon { transform: rotate(-3deg); }
+  .icon { width: 72px; height: 72px; border-radius: 20px; overflow: hidden; margin-bottom: 16px; box-shadow: 0 6px 14px rgba(0,0,0,0.3); transition: transform .2s ease; }
+  .icon svg { width: 100%; height: 100%; display: block; }
+  .app-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+  .app-card p { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+  .tag { display: inline-block; background: var(--tag-bg); color: var(--tag-text); font-weight: 700; font-size: 12px; padding: 5px 12px; border-radius: 999px; }
+  footer { padding: 32px 0; text-align: center; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="container">
+  <header>
+    <div class="brand"><span class="pill"></span> McAbe Software</div>
+    <nav><a href="#" class="active">Apps</a><a href="#">About</a><a href="#">Privacy</a></nav>
+  </header>
+  <section class="hero">
+    <span class="sticker">✦ Indie iOS Apps</span>
+    <h1>The kind of apps that stay on your <span class="wiggle">home screen</span>.</h1>
+    <p class="lede">Scorekeepers, trackers, and tools that earn their keep — built by a mom who likes to make things.</p>
+  </section>
+  <section class="apps">
+    <div class="apps-head"><h2>Meet the apps</h2><div class="wave"></div></div>
+    <div class="category">
+      <div class="category-label">Scoring Games</div>
+      <div class="app-grid">
+        <article class="app-card"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#c5f24d"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#1e2128">DC</text></svg></div><h3>DaCribbage</h3><p>Keep score and play classic cribbage, right on your phone.</p><span class="tag">Coming Soon</span></article>
+        <article class="app-card"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#f2c94d"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#1e2128">C5</text></svg></div><h3>Canasta 5-Deck</h3><p>Focus on the game — let the app handle the scoring math.</p><span class="tag">Coming Soon</span></article>
+        <article class="app-card"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#7ad3c8"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#1e2128">C2</text></svg></div><h3>Canasta 2-Deck</h3><p>Classic two-deck canasta, simplified scorekeeping.</p><span class="tag">Coming Soon</span></article>
+        <article class="app-card"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#ef7d5a"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#1e2128">SS</text></svg></div><h3>Spades Scoring</h3><p>Track bids, tricks, and running totals round by round.</p><span class="tag">Coming Soon</span></article>
+      </div>
+    </div>
+    <div class="category">
+      <div class="category-label">Useful Tools</div>
+      <div class="app-grid">
+        <article class="app-card"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#5a9cef"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#1e2128">TT</text></svg></div><h3>TradeTracker</h3><p>Log stock and options trades by screenshot — no broker API needed.</p><span class="tag">Coming Soon</span></article>
+        <article class="app-card"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#d98ee3"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#1e2128">DA</text></svg></div><h3>DaCalculator</h3><p>Everything you wish the default calculator had — history tape and custom themes.</p><span class="tag">Coming Soon</span></article>
+      </div>
+    </div>
+  </section>
+  <footer>&copy; 2026 McAbe Software · Made with care</footer>
+</div>
+</body>
+</html>

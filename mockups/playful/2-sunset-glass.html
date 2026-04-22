@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playful 2 · Sunset Glass — McAbe Software</title>
+<style>
+  :root {
+    --ink: #2a1b3a;
+    --muted: rgba(42, 27, 58, 0.7);
+    --accent: #ff4d8d;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    color: var(--ink);
+    font-family: "SF Pro Rounded", -apple-system, "Nunito", sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(circle at 15% 10%, #ffd6a5 0%, transparent 45%),
+      radial-gradient(circle at 85% 20%, #ff9eb5 0%, transparent 50%),
+      radial-gradient(circle at 50% 80%, #c7a7ff 0%, transparent 55%),
+      linear-gradient(160deg, #ffe0ce 0%, #ffb0c8 45%, #d3b8ff 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  header {
+    padding: 28px 0;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand {
+    font-weight: 900; font-size: 20px;
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: 0 4px 20px rgba(255,77,141,0.15);
+  }
+  .brand-mark {
+    width: 26px; height: 26px; border-radius: 8px;
+    background: linear-gradient(135deg, #ff9a5a, #ff4d8d);
+    box-shadow: 0 4px 10px rgba(255,77,141,0.3);
+  }
+  nav {
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 999px;
+    padding: 6px;
+    display: flex; gap: 4px;
+  }
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 700; font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    transition: background .15s ease, color .15s ease;
+  }
+  nav a:hover { background: rgba(255,255,255,0.6); }
+  nav a.active { background: linear-gradient(135deg, #ff9a5a, #ff4d8d); color: white; box-shadow: 0 4px 12px rgba(255,77,141,0.35); }
+
+  .hero { padding: 80px 0 56px; text-align: center; }
+  .hero h1 {
+    font-size: clamp(44px, 6.5vw, 78px);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    max-width: 900px; margin: 0 auto;
+  }
+  .hero h1 .gradient-word {
+    background: linear-gradient(135deg, #ff6a3d 0%, #ff4d8d 50%, #a45cff 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .hero .lede { margin-top: 24px; color: var(--muted); font-size: 20px; max-width: 580px; margin-left: auto; margin-right: auto; }
+  .cta {
+    display: inline-block;
+    margin-top: 32px;
+    background: linear-gradient(135deg, #ff6a3d, #ff4d8d);
+    color: white;
+    font-weight: 800;
+    padding: 14px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(255, 77, 141, 0.4);
+    transition: transform .15s ease;
+  }
+  .cta:hover { transform: translateY(-2px); }
+
+  section.apps { padding: 64px 0 112px; }
+  .apps-head { text-align: center; margin-bottom: 44px; }
+  .apps-head .eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.7);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .apps-head h2 { font-size: 36px; font-weight: 900; letter-spacing: -0.02em; }
+
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .app-card {
+    background: rgba(255,255,255,0.45);
+    backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 24px;
+    padding: 26px;
+    box-shadow: 0 10px 30px rgba(115, 40, 105, 0.12);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .app-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(115, 40, 105, 0.2);
+  }
+  .icon {
+    width: 72px; height: 72px; border-radius: 20px; overflow: hidden;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  .icon svg { width: 100%; height: 100%; display: block; }
+  .app-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .app-card p { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+  .tag {
+    display: inline-block;
+    background: rgba(255, 77, 141, 0.15);
+    border: 1px solid rgba(255, 77, 141, 0.3);
+    color: var(--accent);
+    font-weight: 800; font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+
+  footer { padding: 36px 0; text-align: center; color: var(--muted); font-size: 14px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="brand"><span class="brand-mark"></span>McAbe Software</div>
+    <nav>
+      <a href="#" class="active">Apps</a>
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>The kind of apps that stay on your <span class="gradient-word">home screen</span>.</h1>
+    <p class="lede">Scorekeepers, trackers, and tools that earn their keep — built by a mom who likes to make things.</p>
+  </section>
+
+  <section class="apps">
+    <div class="apps-head">
+      <span class="eyebrow">✦ The Collection</span>
+      <h2>Meet the apps</h2>
+    </div>
+    <div class="app-grid">
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6a3d"/><stop offset="1" stop-color="#ff4d8d"/></linearGradient></defs><rect width="80" height="80" rx="18" fill="url(#g1)"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="32" font-weight="900" fill="#fff">DC</text></svg></div>
+        <h3>DaCribbage</h3>
+        <p>Keep score and play classic cribbage, right on your phone.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#50c9c3"/><stop offset="1" stop-color="#4ea8de"/></linearGradient></defs><rect width="80" height="80" rx="18" fill="url(#g2)"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="32" font-weight="900" fill="#fff">TT</text></svg></div>
+        <h3>TradeTracker</h3>
+        <p>Log stock and options trades by screenshot — no broker API needed.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb347"/><stop offset="1" stop-color="#ff7a59"/></linearGradient></defs><rect width="80" height="80" rx="18" fill="url(#g3)"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="32" font-weight="900" fill="#fff">C5</text></svg></div>
+        <h3>Canasta 5-Deck</h3>
+        <p>Focus on the game — let the app handle the scoring math.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8d26a"/><stop offset="1" stop-color="#ffa64d"/></linearGradient></defs><rect width="80" height="80" rx="18" fill="url(#g4)"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="32" font-weight="900" fill="#7a4200">C2</text></svg></div>
+        <h3>Canasta 2-Deck</h3>
+        <p>Classic two-deck canasta, simplified scorekeeping.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="icon"><svg viewBox="0 0 80 80"><defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a45cff"/><stop offset="1" stop-color="#6a3dff"/></linearGradient></defs><rect width="80" height="80" rx="18" fill="url(#g5)"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="32" font-weight="900" fill="#fff">SS</text></svg></div>
+        <h3>Spades Scoring</h3>
+        <p>Track bids, tricks, and running totals round by round.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 McAbe Software · Made with care</footer>
+</div>
+</body>
+</html>

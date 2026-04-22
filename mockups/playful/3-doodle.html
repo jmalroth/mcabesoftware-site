@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playful 3 · Doodle — McAbe Software</title>
+<style>
+  :root {
+    --bg: #fef8e6;
+    --paper: #fffdf5;
+    --ink: #2a2a2a;
+    --muted: #7a6c56;
+    --red: #e26d5a;
+    --teal: #3a8f8f;
+    --mustard: #d9a441;
+    --lilac: #9b7cc9;
+    --leaf: #6b9a56;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Kalam", "Patrick Hand", "Bradley Hand", "Comic Sans MS", -apple-system, sans-serif;
+    font-size: 18px;
+    line-height: 1.55;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(42,42,42,0.07) 1px, transparent 0);
+    background-size: 20px 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .body-font { font-family: "Nunito", -apple-system, sans-serif; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; position: relative; }
+
+  header {
+    padding: 24px 0;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand {
+    font-size: 28px; font-weight: 700;
+    display: flex; align-items: center; gap: 10px;
+    transform: rotate(-1.2deg);
+  }
+  .brand .dot-mark {
+    width: 36px; height: 36px;
+    background: var(--red);
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    transform: rotate(3deg);
+  }
+  nav { display: flex; gap: 20px; }
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 20px;
+    padding-bottom: 2px;
+    position: relative;
+  }
+  nav a.active::after, nav a:hover::after {
+    content: "";
+    position: absolute;
+    left: -4px; right: -4px; bottom: -4px;
+    height: 6px;
+    background: var(--mustard);
+    border-radius: 50%;
+    z-index: -1;
+    transform: skewX(-8deg);
+  }
+
+  .hero { padding: 80px 0 56px; text-align: center; position: relative; }
+  .hero h1 {
+    font-size: clamp(44px, 6.5vw, 74px);
+    font-weight: 700;
+    line-height: 1.05;
+    max-width: 900px; margin: 0 auto;
+    letter-spacing: -0.015em;
+  }
+  .hero h1 .circle-word {
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+  }
+  .hero h1 .circle-word::before {
+    content: "";
+    position: absolute;
+    inset: -6px -10px -4px -10px;
+    border: 3px solid var(--red);
+    border-radius: 50%;
+    transform: rotate(-1.5deg);
+  }
+  .hero .lede {
+    font-family: "Nunito", sans-serif;
+    font-size: 18px; font-weight: 500;
+    color: var(--muted);
+    max-width: 580px; margin: 28px auto 0;
+  }
+  /* Scribble decorations */
+  .scribble { position: absolute; pointer-events: none; }
+  .scribble.s1 { top: 80px; left: 3%; transform: rotate(-10deg); }
+  .scribble.s2 { top: 120px; right: 5%; transform: rotate(18deg); }
+  .scribble.s3 { top: 420px; right: 12%; }
+  .scribble.s4 { top: 320px; left: 5%; }
+
+  section.apps { padding: 64px 0 112px; position: relative; }
+  .apps-head {
+    text-align: center; margin-bottom: 48px;
+    position: relative;
+  }
+  .apps-head h2 {
+    font-size: 40px; font-weight: 700;
+    display: inline-block;
+    transform: rotate(-1deg);
+  }
+  .apps-head .arrow {
+    position: absolute; left: 58%; top: -10px;
+    transform: rotate(-8deg);
+  }
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+  }
+  .app-card {
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 6px 6px 0 var(--ink);
+    position: relative;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .app-card:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 var(--ink); }
+  .app-card:nth-child(odd) { transform: rotate(-0.8deg); }
+  .app-card:nth-child(odd):hover { transform: rotate(-0.8deg) translate(-2px, -2px); }
+  .app-card:nth-child(even) { transform: rotate(1deg); }
+  .app-card:nth-child(even):hover { transform: rotate(1deg) translate(-2px, -2px); }
+
+  .icon {
+    width: 72px; height: 72px;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .icon svg { width: 100%; height: 100%; display: block; }
+  .app-card h3 {
+    font-size: 24px; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .app-card p {
+    font-family: "Nunito", sans-serif;
+    font-size: 15px; font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .tag {
+    font-family: "Nunito", sans-serif;
+    display: inline-block;
+    font-size: 12px; font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--mustard);
+    color: var(--ink);
+    padding: 5px 12px;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    transform: rotate(-2deg);
+  }
+  .star {
+    position: absolute; top: -14px; right: -14px;
+    width: 50px; height: 50px;
+    background: var(--red);
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: white; font-weight: 800;
+    font-family: "Nunito", sans-serif;
+    font-size: 11px;
+    line-height: 1.1;
+    text-align: center;
+    transform: rotate(10deg);
+  }
+  .app-card:nth-child(2) .star { background: var(--teal); }
+  .app-card:nth-child(3) .star { background: var(--mustard); color: var(--ink); }
+  .app-card:nth-child(4) .star { background: var(--leaf); }
+  .app-card:nth-child(5) .star { background: var(--lilac); }
+
+  footer { padding: 36px 0; text-align: center; font-family: "Nunito", sans-serif; color: var(--muted); font-size: 14px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="brand"><span class="dot-mark"></span>McAbe Software</div>
+    <nav>
+      <a href="#" class="active">Apps</a>
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <svg class="scribble s1" width="60" height="60" viewBox="0 0 60 60"><path d="M10 30 Q 20 10, 30 30 T 50 30" stroke="#e26d5a" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+    <svg class="scribble s2" width="70" height="70" viewBox="0 0 70 70"><path d="M10 35 L20 25 M20 35 L10 25 M30 35 L40 25 M40 35 L30 25 M50 35 L60 25 M60 35 L50 25" stroke="#3a8f8f" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+    <svg class="scribble s4" width="80" height="30" viewBox="0 0 80 30"><path d="M5 15 Q 15 5, 25 15 T 45 15 T 65 15 T 80 15" stroke="#d9a441" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+
+    <h1>The kind of apps that stay on your <span class="circle-word">home screen</span>.</h1>
+    <p class="lede">Scorekeepers, trackers, and tools that earn their keep — built by a mom who likes to make things.</p>
+  </section>
+
+  <section class="apps">
+    <div class="apps-head">
+      <h2>Meet the apps!</h2>
+      <svg class="arrow" width="80" height="60" viewBox="0 0 80 60"><path d="M5 10 Q 30 5, 50 35 L 45 30 M50 35 L 45 42" stroke="#e26d5a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="app-grid">
+      <article class="app-card">
+        <div class="star">New!</div>
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#e26d5a"/><text x="40" y="54" text-anchor="middle" font-family="Kalam,sans-serif" font-size="34" font-weight="700" fill="#fff">DC</text></svg></div>
+        <h3>DaCribbage</h3>
+        <p>Keep score and play classic cribbage, right on your phone.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="star">New!</div>
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#3a8f8f"/><text x="40" y="54" text-anchor="middle" font-family="Kalam,sans-serif" font-size="34" font-weight="700" fill="#fff">TT</text></svg></div>
+        <h3>TradeTracker</h3>
+        <p>Log stock and options trades by screenshot — no broker API needed.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="star">New!</div>
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#d9a441"/><text x="40" y="54" text-anchor="middle" font-family="Kalam,sans-serif" font-size="34" font-weight="700" fill="#2a2a2a">C5</text></svg></div>
+        <h3>Canasta 5-Deck</h3>
+        <p>Focus on the game — let the app handle the scoring math.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="star">New!</div>
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#6b9a56"/><text x="40" y="54" text-anchor="middle" font-family="Kalam,sans-serif" font-size="34" font-weight="700" fill="#fff">C2</text></svg></div>
+        <h3>Canasta 2-Deck</h3>
+        <p>Classic two-deck canasta, simplified scorekeeping.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+      <article class="app-card">
+        <div class="star">New!</div>
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#9b7cc9"/><text x="40" y="54" text-anchor="middle" font-family="Kalam,sans-serif" font-size="34" font-weight="700" fill="#fff">SS</text></svg></div>
+        <h3>Spades Scoring</h3>
+        <p>Track bids, tricks, and running totals round by round.</p>
+        <span class="tag">Coming Soon</span>
+      </article>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 McAbe Software · Made by hand</footer>
+</div>
+</body>
+</html>

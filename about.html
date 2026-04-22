@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — McAbe Software</title>
+  <meta name="description" content="About McAbe Software — small, useful iOS apps built by a mom who likes to make things.">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try { if (localStorage.getItem('mcabe-theme') === 'dark') document.documentElement.classList.add('_pre-dark'); } catch (e) {}
+  </script>
+  <style>html._pre-dark, html._pre-dark body { background: #0f1226; color: #f4f3ff; }</style>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains('_pre-dark')) {
+      document.body.classList.add('dark');
+      document.documentElement.classList.remove('_pre-dark');
+    }
+  </script>
+
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme" type="button">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        McAbe Software
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Apps</a>
+        <a href="about.html" class="active">About</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="content-page">
+      <div class="container narrow">
+        <h1>About</h1>
+        <p>Hi! I'm the one-person team behind McAbe Software.</p>
+        <p>I'm a mom who enjoys building small iOS apps — mostly the kinds of things I find myself wanting in everyday life. Card games with the family that need a scorekeeper. A simpler way to track my own trades. Little tools that don't exist, or don't exist the way I want them to.</p>
+        <p>These apps are built for me, by me, but if they're useful to you too, that's the best outcome I could ask for. If you have feature requests or problems, I'm happy to work with you to adjust the features for you!</p>
+        <p>Thanks for stopping by.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year">2026</span> McAbe Software. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

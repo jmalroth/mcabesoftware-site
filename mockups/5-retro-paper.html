@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup 5 · Retro Paper — McAbe Software</title>
+<style>
+  :root {
+    --paper: #f1e6c4;
+    --paper-dark: #e8d9a8;
+    --ink: #2c2218;
+    --ink-dim: #6b5a42;
+    --rule: #c9b685;
+    --accent: #a23822;     /* warm brick red */
+    --olive: #5e6f33;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(44,34,24,0.04) 0%, transparent 50%),
+      radial-gradient(circle at 85% 80%, rgba(44,34,24,0.04) 0%, transparent 50%);
+  }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: "IBM Plex Mono", "Menlo", "Courier New", monospace; }
+
+  header {
+    padding: 24px 0;
+    border-bottom: 3px double var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .brand .mark {
+    width: 38px; height: 38px;
+    background: var(--ink);
+    color: var(--paper);
+    display: grid; place-items: center;
+    font-family: "Iowan Old Style", serif;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 2px;
+  }
+  .brand .name { font-weight: 700; font-size: 19px; letter-spacing: 0.01em; }
+  .brand .name small { display: block; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 500; color: var(--ink-dim); margin-top: 2px; font-family: "IBM Plex Mono", monospace; }
+  nav { display: flex; gap: 22px; font-family: "IBM Plex Mono", monospace; font-size: 13px; }
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+  }
+  nav a::before { content: "["; color: var(--ink-dim); margin-right: 2px; }
+  nav a::after { content: "]"; color: var(--ink-dim); margin-left: 2px; }
+  nav a:hover, nav a.active { color: var(--accent); }
+
+  .hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .hero .shell {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 48px;
+    align-items: end;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 5.5vw, 62px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+  }
+  .hero h1 .accent { color: var(--accent); font-style: italic; }
+  .hero .lede {
+    font-size: 17px;
+    color: var(--ink-dim);
+    border-left: 3px solid var(--accent);
+    padding-left: 16px;
+    max-width: 380px;
+  }
+  .hero .meta {
+    margin-top: 28px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ink-dim);
+  }
+  .hero .meta span { margin-right: 22px; }
+  .hero .meta .label { opacity: 0.7; }
+
+  section.apps { padding: 64px 0 96px; }
+  .section-title {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 36px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .section-title::before { content: ">"; color: var(--accent); font-weight: 700; }
+  .section-title::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+  .app-list { display: flex; flex-direction: column; gap: 0; }
+  .app-row {
+    display: grid;
+    grid-template-columns: 64px 1fr 140px;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px dashed var(--rule);
+    align-items: start;
+  }
+  .app-row:last-child { border-bottom: 1px dashed var(--rule); }
+  .icon {
+    width: 60px; height: 60px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 3px 3px 0 var(--ink);
+    border: 2px solid var(--ink);
+  }
+  .icon svg { width: 100%; height: 100%; display: block; }
+  .app-row h3 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .app-row p { color: var(--ink-dim); font-size: 16px; max-width: 500px; }
+  .status-col {
+    text-align: right;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .status-col .val {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .status-col .sku {
+    display: block;
+    color: var(--ink-dim);
+    margin-top: 4px;
+    font-size: 10px;
+  }
+
+  footer {
+    border-top: 3px double var(--rule);
+    padding: 24px 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 700px) {
+    .hero .shell { grid-template-columns: 1fr; gap: 24px; }
+    .app-row { grid-template-columns: 56px 1fr; }
+    .status-col { grid-column: 1 / -1; text-align: left; padding-left: 80px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="brand">
+      <div class="mark">M</div>
+      <div class="name">McAbe Software<small>Est. 2026 · iOS</small></div>
+    </div>
+    <nav>
+      <a href="#" class="active">apps</a>
+      <a href="#">about</a>
+      <a href="#">privacy</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="shell">
+      <div>
+        <h1>The kind of apps that stay on your <span class="accent">home screen</span>.</h1>
+        <div class="meta">
+          <span><span class="label">CATALOG/</span>2026</span>
+          <span><span class="label">PLATFORM/</span>iOS 17+</span>
+          <span><span class="label">TITLES/</span>05</span>
+        </div>
+      </div>
+      <p class="lede">Scorekeepers, trackers, and tools that earn their keep — built by a mom who likes to make things.</p>
+    </div>
+  </section>
+
+  <section class="apps">
+    <div class="section-title">Catalog / The Collection</div>
+    <div class="app-list">
+
+      <div class="app-row">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#a23822"/><text x="40" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="32" font-weight="700" fill="#f1e6c4">DC</text></svg></div>
+        <div>
+          <h3>DaCribbage</h3>
+          <p>Keep score and play classic cribbage, right on your phone.</p>
+        </div>
+        <div class="status-col"><span class="val">Coming Soon</span><span class="sku">SKU/DC-001</span></div>
+      </div>
+
+      <div class="app-row">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#5e6f33"/><text x="40" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="32" font-weight="700" fill="#f1e6c4">TT</text></svg></div>
+        <div>
+          <h3>TradeTracker</h3>
+          <p>Log your stock and options trades by screenshot — no broker API needed.</p>
+        </div>
+        <div class="status-col"><span class="val">Coming Soon</span><span class="sku">SKU/TT-002</span></div>
+      </div>
+
+      <div class="app-row">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#8a5a2b"/><text x="40" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="32" font-weight="700" fill="#f1e6c4">C5</text></svg></div>
+        <div>
+          <h3>Canasta 5-Deck Scoring</h3>
+          <p>Focus on the game — let the app handle the scoring math.</p>
+        </div>
+        <div class="status-col"><span class="val">Coming Soon</span><span class="sku">SKU/C5-003</span></div>
+      </div>
+
+      <div class="app-row">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#c29837"/><text x="40" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="32" font-weight="700" fill="#2c2218">C2</text></svg></div>
+        <div>
+          <h3>Canasta 2-Deck Scoring</h3>
+          <p>Classic two-deck canasta, simplified scorekeeping.</p>
+        </div>
+        <div class="status-col"><span class="val">Coming Soon</span><span class="sku">SKU/C2-004</span></div>
+      </div>
+
+      <div class="app-row">
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#3b2a5a"/><text x="40" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="32" font-weight="700" fill="#f1e6c4">SS</text></svg></div>
+        <div>
+          <h3>Spades Scoring</h3>
+          <p>Track bids, tricks, and running totals round by round.</p>
+        </div>
+        <div class="status-col"><span class="val">Coming Soon</span><span class="sku">SKU/SS-005</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>McAbe Software · Volume 01 · MMXXVI · All Rights Reserved</footer>
+</div>
+</body>
+</html>

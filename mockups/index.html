@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Mockups — McAbe Software</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #fafafa;
+    color: #222;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    padding: 40px 20px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+  h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .intro { color: #666; margin-bottom: 32px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    display: block;
+    text-decoration: none;
+    background: white;
+    border: 1px solid #e4e4e7;
+    border-radius: 12px;
+    padding: 20px;
+    color: #222;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    border-color: #cfcfd3;
+  }
+  .card .num {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #888;
+    margin-bottom: 6px;
+  }
+  .card h2 { font-size: 20px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .card p { font-size: 14px; color: #555; }
+  .swatches {
+    display: flex; gap: 6px; margin-top: 14px;
+  }
+  .sw { width: 22px; height: 22px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.08); }
+  footer {
+    margin-top: 40px; text-align: center; color: #888; font-size: 13px;
+  }
+  footer a { color: #444; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Design Mockups</h1>
+  <p class="intro">Six directions for mcabesoftware.com. Click any to preview full-page. Pick one or mix-and-match elements — tell me what you like.</p>
+
+  <div class="grid">
+    <a class="card" href="1-editorial.html">
+      <div class="num">Mockup 01</div>
+      <h2>Editorial</h2>
+      <p>Magazine-style. Big serif headline, burgundy accent, numbered article list.</p>
+      <div class="swatches">
+        <span class="sw" style="background:#f6efe1"></span>
+        <span class="sw" style="background:#7a1f1f"></span>
+        <span class="sw" style="background:#201815"></span>
+      </div>
+    </a>
+
+    <a class="card" href="2-playful.html">
+      <div class="num">Mockup 02</div>
+      <h2>Playful</h2>
+      <p>Soft pastel blobs, rounded everything, sticker labels. Warm and friendly.</p>
+      <div class="swatches">
+        <span class="sw" style="background:#fff6ee"></span>
+        <span class="sw" style="background:#e86a3c"></span>
+        <span class="sw" style="background:#5b8def"></span>
+        <span class="sw" style="background:#fff0a8"></span>
+      </div>
+    </a>
+
+    <a class="card" href="3-dark-premium.html">
+      <div class="num">Mockup 03</div>
+      <h2>Dark Premium</h2>
+      <p>Deep navy with warm cream + gold. Playfair serif display. Boutique studio feel.</p>
+      <div class="swatches">
+        <span class="sw" style="background:#0e1015"></span>
+        <span class="sw" style="background:#c9a961"></span>
+        <span class="sw" style="background:#ece3d0"></span>
+      </div>
+    </a>
+
+    <a class="card" href="4-bold-blocks.html">
+      <div class="num">Mockup 04</div>
+      <h2>Bold Blocks</h2>
+      <p>Swiss-modernist. Massive uppercase headline, numbered rows, strong colored icons.</p>
+      <div class="swatches">
+        <span class="sw" style="background:#f4f1ea"></span>
+        <span class="sw" style="background:#ff5138"></span>
+        <span class="sw" style="background:#ffd400"></span>
+        <span class="sw" style="background:#2563d8"></span>
+        <span class="sw" style="background:#111"></span>
+      </div>
+    </a>
+
+    <a class="card" href="5-retro-paper.html">
+      <div class="num">Mockup 05</div>
+      <h2>Retro Paper</h2>
+      <p>Warm paper tone, serif body, monospace metadata. Feels like a 70s product catalog.</p>
+      <div class="swatches">
+        <span class="sw" style="background:#f1e6c4"></span>
+        <span class="sw" style="background:#a23822"></span>
+        <span class="sw" style="background:#5e6f33"></span>
+        <span class="sw" style="background:#2c2218"></span>
+      </div>
+    </a>
+
+    <a class="card" href="6-card-table.html">
+      <div class="num">Mockup 06</div>
+      <h2>Card Table</h2>
+      <p>Felt-green background. Apps presented as playing cards. Leans into the card-game angle.</p>
+      <div class="swatches">
+        <span class="sw" style="background:#0b5a3c"></span>
+        <span class="sw" style="background:#faf4e5"></span>
+        <span class="sw" style="background:#c19a3b"></span>
+        <span class="sw" style="background:#b22023"></span>
+      </div>
+    </a>
+  </div>
+
+  <footer>← <a href="/">Back to current site</a></footer>
+</div>
+</body>
+</html>

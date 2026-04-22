@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup 6 · Card Table — McAbe Software</title>
+<style>
+  :root {
+    --felt: #0b5a3c;
+    --felt-dark: #084229;
+    --felt-light: #12704d;
+    --card: #faf4e5;
+    --card-edge: #d9c995;
+    --ink: #1a1612;
+    --ink-dim: #5d4e3a;
+    --red: #b22023;
+    --gold: #c19a3b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--felt);
+    color: var(--card);
+    font-family: "Baskerville", "Iowan Old Style", "Palatino", Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, var(--felt-light) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, var(--felt-dark) 0%, transparent 60%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+
+  header {
+    padding: 28px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(250, 244, 229, 0.2);
+  }
+  .brand {
+    font-family: "Baskerville", Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand .suits {
+    display: inline-flex; gap: 3px;
+    font-size: 14px;
+  }
+  .brand .s-red { color: var(--red); }
+  .brand .s-black { color: var(--ink); background: var(--card); padding: 2px 4px; border-radius: 3px; }
+
+  nav { display: flex; gap: 30px; }
+  nav a {
+    color: var(--card);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    transition: opacity .15s ease;
+  }
+  nav a:hover, nav a.active { opacity: 1; color: var(--gold); }
+
+  .hero {
+    padding: 96px 0 72px;
+    text-align: center;
+    position: relative;
+  }
+  .hero::before, .hero::after {
+    content: "";
+    position: absolute; top: 50%;
+    width: 80px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: translateY(-50%);
+  }
+  .hero::before { left: 10%; }
+  .hero::after { right: 10%; }
+
+  .hero .suits-deco {
+    font-size: 22px;
+    letter-spacing: 0.4em;
+    margin-bottom: 24px;
+    color: var(--gold);
+  }
+  .hero .suits-deco .r { color: var(--red); }
+  .hero h1 {
+    font-size: clamp(42px, 6vw, 66px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.12;
+    max-width: 880px;
+    margin: 0 auto 22px;
+    color: var(--card);
+    letter-spacing: -0.01em;
+  }
+  .hero h1 .mark {
+    font-style: normal;
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2px;
+  }
+  .hero .lede {
+    color: rgba(250, 244, 229, 0.78);
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  section.apps { padding: 48px 0 112px; }
+  .section-tag {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section-tag::before { content: "♠"; margin-right: 12px; }
+  .section-tag::after { content: "♠"; margin-left: 12px; }
+  .apps h2 {
+    text-align: center;
+    font-family: "Baskerville", Georgia, serif;
+    font-size: 36px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 52px;
+    color: var(--card);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 28px;
+  }
+  .play-card {
+    background: var(--card);
+    color: var(--ink);
+    border-radius: 14px;
+    padding: 20px 18px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35), 0 6px 12px rgba(0,0,0,0.2);
+    border: 1px solid var(--card-edge);
+    position: relative;
+    transition: transform .2s ease, box-shadow .2s ease;
+    display: flex; flex-direction: column;
+    min-height: 280px;
+  }
+  .play-card:hover {
+    transform: translateY(-6px) rotate(-0.8deg);
+    box-shadow: 0 30px 50px rgba(0,0,0,0.4), 0 10px 20px rgba(0,0,0,0.25);
+  }
+
+  .corner {
+    position: absolute;
+    font-family: "Baskerville", Georgia, serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .corner .rank { font-size: 20px; }
+  .corner .suit { font-size: 15px; margin-top: 2px; }
+  .corner.tl { top: 12px; left: 14px; }
+  .corner.br { bottom: 12px; right: 14px; transform: rotate(180deg); }
+  .corner.red { color: var(--red); }
+  .corner.black { color: var(--ink); }
+
+  .icon {
+    width: 80px; height: 80px;
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 28px auto 18px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  }
+  .icon svg { width: 100%; height: 100%; display: block; }
+
+  .play-card h3 {
+    font-family: "Baskerville", Georgia, serif;
+    font-size: 19px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 6px;
+    letter-spacing: -0.005em;
+  }
+  .play-card p {
+    font-size: 14.5px;
+    text-align: center;
+    color: var(--ink-dim);
+    flex: 1;
+    padding: 0 4px;
+  }
+  .play-card .stamp {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--red);
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--card-edge);
+    font-family: "Baskerville", Georgia, serif;
+    font-weight: 700;
+  }
+
+  footer {
+    padding: 36px 0;
+    text-align: center;
+    color: rgba(250, 244, 229, 0.55);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(250, 244, 229, 0.15);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="brand">
+      McAbe Software
+      <span class="suits"><span class="s-red">♥</span><span class="s-black">♠</span></span>
+    </div>
+    <nav>
+      <a href="#" class="active">Apps</a>
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="suits-deco"><span class="r">♥</span> ♠ <span class="r">♦</span> ♣</div>
+    <h1>The kind of apps that stay on your <span class="mark">home screen</span>.</h1>
+    <p class="lede">Scorekeepers, trackers, and tools that earn their keep — built by a mom who likes to make things.</p>
+  </section>
+
+  <section class="apps">
+    <div class="section-tag">The House Collection</div>
+    <h2>Meet the apps</h2>
+
+    <div class="card-grid">
+      <article class="play-card">
+        <span class="corner tl red"><span class="rank">A</span><span class="suit">♥</span></span>
+        <span class="corner br red"><span class="rank">A</span><span class="suit">♥</span></span>
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="16" fill="#b22023"/><text x="40" y="53" text-anchor="middle" font-family="Baskerville,serif" font-size="32" font-weight="700" fill="#faf4e5">DC</text></svg></div>
+        <h3>DaCribbage</h3>
+        <p>Keep score and play classic cribbage, right on your phone.</p>
+        <div class="stamp">Coming Soon</div>
+      </article>
+
+      <article class="play-card">
+        <span class="corner tl black"><span class="rank">K</span><span class="suit">♠</span></span>
+        <span class="corner br black"><span class="rank">K</span><span class="suit">♠</span></span>
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="16" fill="#0b5a3c"/><text x="40" y="53" text-anchor="middle" font-family="Baskerville,serif" font-size="32" font-weight="700" fill="#faf4e5">TT</text></svg></div>
+        <h3>TradeTracker</h3>
+        <p>Log stock and options trades by screenshot — no broker API needed.</p>
+        <div class="stamp">Coming Soon</div>
+      </article>
+
+      <article class="play-card">
+        <span class="corner tl red"><span class="rank">Q</span><span class="suit">♦</span></span>
+        <span class="corner br red"><span class="rank">Q</span><span class="suit">♦</span></span>
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="16" fill="#c19a3b"/><text x="40" y="53" text-anchor="middle" font-family="Baskerville,serif" font-size="32" font-weight="700" fill="#1a1612">C5</text></svg></div>
+        <h3>Canasta 5-Deck</h3>
+        <p>Focus on the game — let the app handle the scoring math.</p>
+        <div class="stamp">Coming Soon</div>
+      </article>
+
+      <article class="play-card">
+        <span class="corner tl black"><span class="rank">J</span><span class="suit">♣</span></span>
+        <span class="corner br black"><span class="rank">J</span><span class="suit">♣</span></span>
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="16" fill="#1a1612"/><text x="40" y="53" text-anchor="middle" font-family="Baskerville,serif" font-size="32" font-weight="700" fill="#c19a3b">C2</text></svg></div>
+        <h3>Canasta 2-Deck</h3>
+        <p>Classic two-deck canasta, simplified scorekeeping.</p>
+        <div class="stamp">Coming Soon</div>
+      </article>
+
+      <article class="play-card">
+        <span class="corner tl black"><span class="rank">10</span><span class="suit">♠</span></span>
+        <span class="corner br black"><span class="rank">10</span><span class="suit">♠</span></span>
+        <div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="16" fill="#3b2a5a"/><text x="40" y="53" text-anchor="middle" font-family="Baskerville,serif" font-size="32" font-weight="700" fill="#faf4e5">SS</text></svg></div>
+        <h3>Spades Scoring</h3>
+        <p>Track bids, tricks, and running totals round by round.</p>
+        <div class="stamp">Coming Soon</div>
+      </article>
+    </div>
+  </section>
+
+  <footer>&copy; MMXXVI · McAbe Software · Dealt with Care</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Light / Dark Toggle — McAbe Software</title>
+<style>
+  /* ---------- LIGHT THEME (default: Cornflower Cream) ---------- */
+  :root {
+    --bg: #f5f6fa;
+    --surface: #ffffff;
+    --blob-1: #c4d4ff;
+    --blob-2: #d4e8d8;
+    --blob-3: #e0d4f5;
+    --ink: #1f2440;
+    --muted: #5e648a;
+    --accent: #4a6cf7;
+    --accent2: #4ab89a;
+    --tag-bg: #d4dfff;
+    --tag-text: #1a3ba8;
+    --card-shadow: 0 10px 30px rgba(31,36,64,0.08);
+    --icon-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    --sticker-shadow: 0 8px 20px rgba(74,108,247,0.2);
+    --blob-opacity: 0.6;
+    --blob-blur: 60px;
+    --nav-hover-bg: rgba(0,0,0,0.06);
+    --border-subtle: transparent;
+
+    --i-dc: #4a6cf7;
+    --i-c5: #7b5ad1;
+    --i-c2: #4ab89a;
+    --i-ss: #3d5089;
+    --i-tt: #2d9bc4;
+    --i-da: #a085d6;
+    --i-text-dark: #fff;
+    --i-text-light-card: #fff;
+  }
+
+  /* ---------- DARK THEME (Midnight Pop) ---------- */
+  body.dark {
+    --bg: #0f1226;
+    --surface: #1a1f3d;
+    --blob-1: #3a2d7a;
+    --blob-2: #5a1a5c;
+    --blob-3: #1a3a6b;
+    --ink: #f4f3ff;
+    --muted: #a3a6c9;
+    --accent: #ff4d9e;
+    --accent2: #4dd4ff;
+    --tag-bg: rgba(255,77,158,0.2);
+    --tag-text: #ff6fb0;
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    --icon-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    --sticker-shadow: 0 8px 20px rgba(255,77,158,0.25);
+    --blob-opacity: 0.7;
+    --blob-blur: 80px;
+    --nav-hover-bg: rgba(255,255,255,0.08);
+    --border-subtle: rgba(255,255,255,0.08);
+
+    --i-dc: #ff4d9e;
+    --i-c5: #4dd4ff;
+    --i-c2: #f7d64a;
+    --i-ss: #9f4dff;
+    --i-tt: #3d9aff;
+    --i-da: #4abf6b;
+    --i-text-dark: #fff;
+    --i-text-light-card: #0f1226;
+  }
+  body.dark .icon-c2 text { fill: #0f1226; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "SF Pro Rounded", -apple-system, "Nunito", "Avenir Next", sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    overflow-x: hidden;
+    min-height: 100vh;
+    transition: background .35s ease, color .35s ease;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+  .bg-blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    opacity: var(--blob-opacity);
+    filter: blur(var(--blob-blur));
+    transition: background .35s ease, opacity .35s ease, filter .35s ease;
+  }
+  .blob.b1 { width: 460px; height: 460px; background: var(--blob-1); top: -160px; left: -140px; }
+  .blob.b2 { width: 420px; height: 420px; background: var(--blob-2); top: 220px; right: -140px; }
+  .blob.b3 { width: 340px; height: 340px; background: var(--blob-3); bottom: -100px; left: 30%; }
+
+  header {
+    padding: 24px 0;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand {
+    font-weight: 800; font-size: 20px;
+    display: flex; align-items: center; gap: 12px;
+    color: var(--ink);
+    transition: color .35s ease;
+  }
+
+  /* The light/dark toggle pill */
+  .theme-toggle {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    background: var(--accent);
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background .35s ease, box-shadow .35s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  body.dark .theme-toggle { box-shadow: 0 0 16px rgba(255,77,158,0.45); }
+  .theme-toggle::before {
+    content: "";
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 22px; height: 22px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform .35s cubic-bezier(.4, 0, .2, 1), background .35s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  body.dark .theme-toggle::before { transform: translateX(24px); background: #0f1226; }
+  /* Sun / moon glyphs inside the knob */
+  .theme-toggle .icon-sun, .theme-toggle .icon-moon {
+    position: absolute;
+    top: 50%;
+    width: 12px; height: 12px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: opacity .25s ease;
+  }
+  .theme-toggle .icon-sun { left: 8px; opacity: 0; color: #f7d64a; }
+  .theme-toggle .icon-moon { right: 8px; opacity: 1; color: #fff; }
+  body.dark .theme-toggle .icon-sun { opacity: 1; }
+  body.dark .theme-toggle .icon-moon { opacity: 0; }
+
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    margin-left: 6px;
+    transition: background .2s ease, color .35s ease;
+  }
+  nav a:hover, nav a.active { background: var(--nav-hover-bg); }
+  body.dark nav a { color: var(--muted); }
+  body.dark nav a:hover, body.dark nav a.active { color: var(--ink); }
+
+  .hero { padding: 72px 0 56px; text-align: center; }
+  .hero h1 {
+    font-size: clamp(42px, 6.5vw, 72px);
+    font-weight: 900; letter-spacing: -0.03em;
+    line-height: 1.04; max-width: 900px; margin: 0 auto;
+  }
+  .hero h1 span.wiggle {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 2px 18px;
+    border-radius: 999px;
+    transform: rotate(-2deg);
+    transition: background .35s ease, box-shadow .35s ease;
+  }
+  body.dark .hero h1 span.wiggle { box-shadow: 0 0 40px rgba(255,77,158,0.4); }
+  .hero .lede {
+    margin-top: 24px;
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 600px;
+    margin-left: auto; margin-right: auto;
+  }
+  .hero .sticker {
+    display: inline-block;
+    margin-bottom: 20px;
+    background: var(--surface);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 700; font-size: 13px;
+    color: var(--accent);
+    box-shadow: var(--sticker-shadow);
+    transform: rotate(-3deg);
+    border: 1px solid var(--border-subtle);
+    transition: background .35s ease, color .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+
+  section.apps { padding: 48px 0 112px; }
+  .apps-head { text-align: center; margin-bottom: 28px; }
+  .apps-head h2 { font-size: 32px; font-weight: 900; letter-spacing: -0.02em; }
+  .apps-head .wave {
+    margin: 12px auto 0;
+    width: 80px; height: 6px;
+    background: var(--accent2);
+    border-radius: 999px;
+    transition: background .35s ease;
+  }
+  .category { margin-top: 32px; }
+  .category-label {
+    text-align: center;
+    font-weight: 800; font-size: 12px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+    transition: color .35s ease;
+  }
+  body.dark .category-label { color: var(--accent2); }
+  .category-label::before, .category-label::after { content: "•"; margin: 0 10px; color: var(--muted); }
+
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .app-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 26px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    transition: transform .2s ease, background .35s ease, box-shadow .35s ease, border-color .2s ease;
+    position: relative;
+  }
+  .app-card:hover { transform: translateY(-6px) rotate(-0.5deg); }
+  body.dark .app-card:hover { border-color: rgba(255,77,158,0.4); }
+  .app-card:nth-child(2n) .icon { transform: rotate(4deg); }
+  .app-card:nth-child(3n) .icon { transform: rotate(-3deg); }
+  .icon {
+    width: 72px; height: 72px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: var(--icon-shadow);
+    transition: transform .2s ease, box-shadow .35s ease;
+  }
+  .icon svg { width: 100%; height: 100%; display: block; }
+  .app-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+  .app-card p { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-weight: 700; font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    transition: background .35s ease, color .35s ease;
+  }
+
+  footer { padding: 32px 0; text-align: center; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 540px) {
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-blobs">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
+
+<div class="container">
+  <header>
+    <div class="brand">
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      McAbe Software
+    </div>
+    <nav>
+      <a href="#" class="active">Apps</a>
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <span class="sticker">✦ Indie iOS Apps</span>
+    <h1>The kind of apps that stay on your <span class="wiggle">home screen</span>.</h1>
+    <p class="lede">Scorekeepers, trackers, and tools that earn their keep — built by a mom who likes to make things.</p>
+  </section>
+
+  <section class="apps">
+    <div class="apps-head"><h2>Meet the apps</h2><div class="wave"></div></div>
+
+    <div class="category">
+      <div class="category-label">Scoring Games</div>
+      <div class="app-grid">
+        <article class="app-card"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="var(--i-dc)"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#fff">DC</text></svg></div><h3>DaCribbage</h3><p>Keep score and play classic cribbage, right on your phone.</p><span class="tag">Coming Soon</span></article>
+        <article class="app-card"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="var(--i-c5)"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#fff">C5</text></svg></div><h3>Canasta 5-Deck</h3><p>Focus on the game — let the app handle the scoring math.</p><span class="tag">Coming Soon</span></article>
+        <article class="app-card icon-c2"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="var(--i-c2)"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#fff">C2</text></svg></div><h3>Canasta 2-Deck</h3><p>Classic two-deck canasta, simplified scorekeeping.</p><span class="tag">Coming Soon</span></article>
+        <article class="app-card"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="var(--i-ss)"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#fff">SS</text></svg></div><h3>Spades Scoring</h3><p>Track bids, tricks, and running totals round by round.</p><span class="tag">Coming Soon</span></article>
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="category-label">Useful Tools</div>
+      <div class="app-grid">
+        <article class="app-card"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="var(--i-tt)"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#fff">TT</text></svg></div><h3>TradeTracker</h3><p>Log stock and options trades by screenshot — no broker API needed.</p><span class="tag">Coming Soon</span></article>
+        <article class="app-card"><div class="icon"><svg viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="var(--i-da)"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="800" fill="#fff">DA</text></svg></div><h3>DaCalculator</h3><p>Everything you wish the default calculator had — history tape and custom themes.</p><span class="tag">Coming Soon</span></article>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>&copy; 2026 McAbe Software · Made with care</footer>
+</div>
+
+<script>
+  (function() {
+    var body = document.body;
+    var toggle = document.getElementById('themeToggle');
+    var saved = localStorage.getItem('mcabe-theme');
+    if (saved === 'dark') body.classList.add('dark');
+    toggle.addEventListener('click', function() {
+      body.classList.toggle('dark');
+      localStorage.setItem('mcabe-theme', body.classList.contains('dark') ? 'dark' : 'light');
+    });
+  })();
+</script>
+</body>
+</html>
