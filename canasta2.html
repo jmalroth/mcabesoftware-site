@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canasta 2-Deck Scoring — McAbe Software</title>
+  <meta name="description" content="Two Deck Canasta scorekeeper for serious Canasta nights. Guided round entry, full canasta tracking, and customizable scoring rules.">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try { if (localStorage.getItem('mcabe-theme') === 'dark') document.documentElement.classList.add('_pre-dark'); } catch (e) {}
+  </script>
+  <style>html._pre-dark, html._pre-dark body { background: #0f1226; color: #f4f3ff; }</style>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains('_pre-dark')) {
+      document.body.classList.add('dark');
+      document.documentElement.classList.remove('_pre-dark');
+    }
+  </script>
+
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme" type="button">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        McAbe Software
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Apps</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-detail">
+      <div class="container">
+        <a href="index.html" class="back-link">All apps</a>
+
+        <div class="app-detail-head">
+          <div class="icon"><img src="assets/icons/canasta2.png" alt="Canasta 2-Deck Scoring app icon"></div>
+          <div class="titles">
+            <h1>Canasta 2-Deck Scoring</h1>
+            <span class="tag">Coming Soon</span>
+          </div>
+        </div>
+
+        <p class="lede">Score Two Deck Canasta the easy way. Track melds, card counts, and team standings round by round — with full rules customization and game history.</p>
+
+        <h2>Built for serious Canasta nights</h2>
+        <p>Stop juggling pencils and scrap paper. This app is a purpose-built scorekeeper for the classic 4-player, 2-team Two Deck Canasta game, taking you from setup to final score with no math required.</p>
+
+        <h3>Features</h3>
+        <ul>
+          <li>4-player, 2-team gameplay with custom team names and colors</li>
+          <li>Guided round entry: melds → card counts → summary</li>
+          <li>Full canasta tracking: natural, mixed, wild, sevens, aces — plus red and black threes</li>
+          <li>Splash/wipeout scoring with optional perfect-cut bonuses</li>
+          <li>Six card-count layouts so data entry fits the way <em>you</em> play</li>
+          <li>Edit past rounds — see exactly how each correction changes the score</li>
+          <li>Player roster with persistent win/loss records and high-score tracking</li>
+          <li>Fully customizable scoring rules — save your house rules and load them anytime</li>
+          <li>Round-by-round dealer rotation and history</li>
+          <li>Resumes your game right where you left off</li>
+        </ul>
+
+        <h3>Why you'll like it</h3>
+        <p>Designed by Canasta players for Canasta players. Whether you stick to traditional rules or play with your family's quirky variations, the customizable scoring engine handles it. The first scorekeeper that actually keeps up with the speed of your table.</p>
+        <p>Race to 8,500. Let the app do the math.</p>
+
+        <h2>Screenshots</h2>
+        <div class="shots">
+          <img src="assets/screenshots/canasta2/promo_01_hero.png" alt="Canasta 2-Deck hero screen">
+          <img src="assets/screenshots/canasta2/promo_02_setup.png" alt="Canasta 2-Deck setup">
+          <img src="assets/screenshots/canasta2/promo_03_melds.png" alt="Canasta 2-Deck melds">
+          <img src="assets/screenshots/canasta2/promo_04_count.png" alt="Canasta 2-Deck card counts">
+          <img src="assets/screenshots/canasta2/promo_05_summary.png" alt="Canasta 2-Deck summary">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year">2026</span> McAbe Software. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

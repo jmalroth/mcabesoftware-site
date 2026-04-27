@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DaCalculator — McAbe Software</title>
+  <meta name="description" content="DaCalculator turns everyday math into something you actually enjoy looking at — live ticker tape, custom themes, and repeating decimals shown the right way.">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try { if (localStorage.getItem('mcabe-theme') === 'dark') document.documentElement.classList.add('_pre-dark'); } catch (e) {}
+  </script>
+  <style>html._pre-dark, html._pre-dark body { background: #0f1226; color: #f4f3ff; }</style>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains('_pre-dark')) {
+      document.body.classList.add('dark');
+      document.documentElement.classList.remove('_pre-dark');
+    }
+  </script>
+
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme" type="button">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        McAbe Software
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Apps</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-detail">
+      <div class="container">
+        <a href="index.html" class="back-link">All apps</a>
+
+        <div class="app-detail-head">
+          <div class="icon"><img src="assets/icons/dacalculator.png" alt="DaCalculator app icon"></div>
+          <div class="titles">
+            <h1>DaCalculator</h1>
+            <span class="tag">Coming Soon</span>
+          </div>
+        </div>
+
+        <p class="lede">DaCalculator turns everyday math into something you actually enjoy looking at — with a live ticker tape, custom themes, and repeating decimals shown the right way.</p>
+
+        <h2>The calculator that thinks like you do.</h2>
+        <p>Most calculators show you a number. DaCalculator shows you the <em>math</em>. As you tap, your full expression builds across the display, a live preview tells you exactly what <code>=</code> is about to give you, and every result drops into a scrolling ticker tape you can reuse, edit, or replay.</p>
+
+        <h3>Built for everyday arithmetic</h3>
+        <ul>
+          <li>Live expression display with running preview</li>
+          <li>Tap any past result to drop it back into a new equation</li>
+          <li>Parentheses with implied multiplication — <code>3(4+2)</code> just works</li>
+          <li>Persistent memory (M+, MR, MC) that survives between sessions</li>
+          <li>Backspace any digit without nuking the whole entry</li>
+        </ul>
+
+        <h3>Advanced mode for when "+ − × ÷" isn't enough</h3>
+        <ul>
+          <li>Powers, square root, cube root, factorial</li>
+          <li>sin / cos / tan, sinh / cosh / tanh</li>
+          <li>Natural log, log₁₀</li>
+          <li>π and e as one-tap constants</li>
+        </ul>
+
+        <h3>Details that nerds will love</h3>
+        <ul>
+          <li>Repeating decimals get a true vinculum overline — <code>1 ÷ 3</code> becomes <code>0.3̄</code>, not <code>0.3333333…</code></li>
+          <li>European number format toggle (<code>.</code> for thousands, <code>,</code> for decimal)</li>
+          <li>Thousands grouping you can turn off when you don't want it</li>
+          <li>Themes you can pick to match your vibe</li>
+        </ul>
+
+        <p>No ads. No tracking. No upsells. Just a beautifully built calculator that respects your time and your eyes.</p>
+
+        <h2>Screenshots</h2>
+        <div class="shots">
+          <img src="assets/screenshots/dacalculator/01_basic.png" alt="DaCalculator basic mode">
+          <img src="assets/screenshots/dacalculator/02_repeating.png" alt="DaCalculator repeating decimals">
+          <img src="assets/screenshots/dacalculator/03_scientific.png" alt="DaCalculator scientific mode">
+          <img src="assets/screenshots/dacalculator/04_parens.png" alt="DaCalculator parentheses">
+          <img src="assets/screenshots/dacalculator/05_history.png" alt="DaCalculator history tape">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year">2026</span> McAbe Software. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canasta 5-Deck Scoring — McAbe Software</title>
+  <meta name="description" content="Canasta Scorekeeper for 4-player, 5-deck partner play. Tap-to-score melds, smart card counts, and full round history.">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try { if (localStorage.getItem('mcabe-theme') === 'dark') document.documentElement.classList.add('_pre-dark'); } catch (e) {}
+  </script>
+  <style>html._pre-dark, html._pre-dark body { background: #0f1226; color: #f4f3ff; }</style>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains('_pre-dark')) {
+      document.body.classList.add('dark');
+      document.documentElement.classList.remove('_pre-dark');
+    }
+  </script>
+
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme" type="button">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        McAbe Software
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Apps</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-detail">
+      <div class="container">
+        <a href="index.html" class="back-link">All apps</a>
+
+        <div class="app-detail-head">
+          <div class="icon"><img src="assets/icons/canasta5.png" alt="Canasta 5-Deck Scoring app icon"></div>
+          <div class="titles">
+            <h1>Canasta 5-Deck Scoring</h1>
+            <span class="tag">Coming Soon</span>
+          </div>
+        </div>
+
+        <p class="lede">Track every Canasta round in style. Tap-to-score melds, smart card counts, perfect cut bonuses, and full round history — built for 5-deck partner play.</p>
+
+        <h2>Built for real games</h2>
+        <p>Stop wrestling with paper scorepads and clunky calculators. Canasta Scorekeeper is the cleanest, fastest way to track a 4-player, 5-deck Canasta game from the first deal to the final hand.</p>
+        <p>Designed by players who actually play, every screen is tuned for the rhythm of a real game — quick taps between hands, no fiddly menus, and a layout that stays readable across the table.</p>
+
+        <h3>Score a hand in seconds</h3>
+        <ul>
+          <li>Tap-to-cycle clean and mixed canastas for every rank</li>
+          <li>Multiple canastas per rank fully supported</li>
+          <li>Dedicated Seven and Wild canasta tracking</li>
+          <li>Red 3 bonus with threshold scaling, Black 3 penalties, and going-out bonus all handled automatically</li>
+          <li>Manual override or adjustment when a hand needs a custom score</li>
+        </ul>
+
+        <h3>Card counts that just work</h3>
+        <ul>
+          <li>Per-rank card entry with smart maximums based on melds and deck count</li>
+          <li>Side-by-side or stacked layouts to match how you like to play</li>
+          <li>Automatic sync between melds and card counts so you never double-enter</li>
+        </ul>
+
+        <h3>Track the whole game</h3>
+        <ul>
+          <li>Persistent round history with full per-team breakdowns</li>
+          <li>Tap any past round to see exactly where the points came from</li>
+          <li>Edit prior round scores with a clear delta showing what changed</li>
+          <li>Dealer rotation tracked automatically</li>
+          <li>Perfect Cut +100 bonus, one tap per player</li>
+        </ul>
+
+        <h3>Built for your table</h3>
+        <ul>
+          <li>2 teams, 4 players, custom team names and colors</li>
+          <li>Roster of regular players with win/loss records over time</li>
+          <li>Configurable winning score (default 8500)</li>
+          <li>Game state persists between sessions — close the app mid-round and pick up exactly where you left off</li>
+          <li>Screen stays awake during play</li>
+        </ul>
+
+        <p>Whether you're at the kitchen table or on vacation in Hawaii, this is the scorepad your Canasta night has been waiting for.</p>
+
+        <h2>Screenshots</h2>
+        <div class="shots">
+          <img src="assets/screenshots/canasta5/01_main.png" alt="Canasta 5-Deck main screen">
+          <img src="assets/screenshots/canasta5/02_records.png" alt="Canasta 5-Deck records">
+          <img src="assets/screenshots/canasta5/03_settings.png" alt="Canasta 5-Deck settings">
+          <img src="assets/screenshots/canasta5/04_summary.png" alt="Canasta 5-Deck round summary">
+          <img src="assets/screenshots/canasta5/05_setup.png" alt="Canasta 5-Deck game setup">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year">2026</span> McAbe Software. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

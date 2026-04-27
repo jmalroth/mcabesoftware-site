@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TradeTracker — McAbe Software</title>
+  <meta name="description" content="TradeTracker turns E*TRADE screenshots into a structured trade journal. On-device OCR. No broker API, no spreadsheets.">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try { if (localStorage.getItem('mcabe-theme') === 'dark') document.documentElement.classList.add('_pre-dark'); } catch (e) {}
+  </script>
+  <style>html._pre-dark, html._pre-dark body { background: #0f1226; color: #f4f3ff; }</style>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains('_pre-dark')) {
+      document.body.classList.add('dark');
+      document.documentElement.classList.remove('_pre-dark');
+    }
+  </script>
+
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme" type="button">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        McAbe Software
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Apps</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-detail">
+      <div class="container">
+        <a href="index.html" class="back-link">All apps</a>
+
+        <div class="app-detail-head">
+          <div class="icon"><img src="assets/icons/tradetracker.png" alt="TradeTracker app icon"></div>
+          <div class="titles">
+            <h1>TradeTracker</h1>
+            <span class="tag">Coming Soon</span>
+          </div>
+        </div>
+
+        <p class="lede">Snap a screenshot of your E*TRADE order, get a clean trade log. OCR-powered tracking for options and stocks — no broker API, no manual entry, no spreadsheets.</p>
+
+        <h2>Track your trades by screenshot. That's it.</h2>
+        <p>TradeTracker turns E*TRADE screenshots into a structured trade journal. Snap an Order Details or Transactions screen, share it to TradeTracker, and the app reads the ticker, action, quantity, price, fees, and net amount automatically.</p>
+        <p>Built for active options traders who don't want to wrestle with broker APIs or copy numbers into spreadsheets.</p>
+
+        <h3>Features</h3>
+        <ul>
+          <li>Import from Photos or straight from the iOS share sheet</li>
+          <li>On-device OCR (Apple Vision) — your screenshots never leave your phone</li>
+          <li>Full options support: calls, puts, strikes, expirations, and the four-way action model (buy/sell to open/close)</li>
+          <li>Equity trades supported too</li>
+          <li>Editable review screen — every parsed field is checked before it's saved</li>
+          <li>Handles partial fills, multiple trades per screenshot, and both E*TRADE screen layouts</li>
+          <li>Local SwiftData storage — no account, no cloud, no tracking</li>
+        </ul>
+
+        <p>Built for options traders on E*TRADE mobile who want a fast, private way to keep a clean trading log without retyping every fill.</p>
+
+        <h3>Privacy</h3>
+        <p>All processing happens on-device. No analytics, no accounts, no third-party services.</p>
+
+        <h2>Screenshots</h2>
+        <div class="shots">
+          <img src="assets/screenshots/tradetracker/01-positions.png" alt="TradeTracker positions">
+          <img src="assets/screenshots/tradetracker/02-stats.png" alt="TradeTracker stats">
+          <img src="assets/screenshots/tradetracker/03-trades.png" alt="TradeTracker trades">
+          <img src="assets/screenshots/tradetracker/04-position-detail.png" alt="TradeTracker position detail">
+          <img src="assets/screenshots/tradetracker/05-homescreen.png" alt="TradeTracker home screen">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year">2026</span> McAbe Software. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

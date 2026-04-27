@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spades Scoring — McAbe Software</title>
+  <meta name="description" content="Spades Scoring — a clean, fast, no-nonsense scorekeeper built for the way Spades is actually played.">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try { if (localStorage.getItem('mcabe-theme') === 'dark') document.documentElement.classList.add('_pre-dark'); } catch (e) {}
+  </script>
+  <style>html._pre-dark, html._pre-dark body { background: #0f1226; color: #f4f3ff; }</style>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains('_pre-dark')) {
+      document.body.classList.add('dark');
+      document.documentElement.classList.remove('_pre-dark');
+    }
+  </script>
+
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme" type="button">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        McAbe Software
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Apps</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-detail">
+      <div class="container">
+        <a href="index.html" class="back-link">All apps</a>
+
+        <div class="app-detail-head">
+          <div class="icon"><img src="assets/icons/spades.png" alt="Spades Scoring app icon"></div>
+          <div class="titles">
+            <h1>Spades Scoring</h1>
+            <span class="tag">Coming Soon</span>
+          </div>
+        </div>
+
+        <p class="lede">The smart way to keep score. Stop scribbling on napkins and arguing over bag penalties.</p>
+
+        <h2>Built for the way Spades is actually played</h2>
+        <p>Set up a game in seconds, enter bids and tricks, and let the app handle the rest — contract points, overtrick bags, the −100 penalty, nil bonuses, and blind nil. It just works.</p>
+
+        <h3>Features</h3>
+        <ul>
+          <li>Full Spades scoring — bids, nil (100 pts), and blind nil (200 pts) handled automatically</li>
+          <li>Three bid input styles — numpad, stepper, or grid. Pick what feels right.</li>
+          <li>Customizable rules — adjust win/lose thresholds, bag penalties, and house-rule variants</li>
+          <li>Complete round history — tap any round to see exactly how the points broke down</li>
+          <li>Player &amp; team management — drag-and-drop seating, custom team names and colors</li>
+          <li>Records &amp; stats — win/loss tracking, high scores, and per-player leaderboards</li>
+          <li>Auto-resume — pick up right where you left off</li>
+          <li>Real-time validation — never enter an invalid bid or trick count again</li>
+        </ul>
+
+        <p>Whether you play classic 500-to-win, track bags as points, or run your own house rules, Spades Scoring keeps up. Four players, two teams, zero math.</p>
+        <p>Download and deal the next hand.</p>
+
+        <h2>Screenshots</h2>
+        <div class="shots">
+          <img src="assets/screenshots/spades/promo_01_main.png" alt="Spades main screen">
+          <img src="assets/screenshots/spades/promo_02_bids.png" alt="Spades bid entry">
+          <img src="assets/screenshots/spades/promo_03_records.png" alt="Spades records">
+          <img src="assets/screenshots/spades/promo_04_setup.png" alt="Spades setup">
+          <img src="assets/screenshots/spades/promo_05_settings.png" alt="Spades settings">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year">2026</span> McAbe Software. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>
