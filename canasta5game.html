@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canasta 5 — McAbe Software</title>
+  <meta name="description" content="Play 5-deck Canasta on your phone — solo against three computer opponents.">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try { if (localStorage.getItem('mcabe-theme') === 'dark') document.documentElement.classList.add('_pre-dark'); } catch (e) {}
+  </script>
+  <style>html._pre-dark, html._pre-dark body { background: #0f1226; color: #f4f3ff; }</style>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains('_pre-dark')) {
+      document.body.classList.add('dark');
+      document.documentElement.classList.remove('_pre-dark');
+    }
+  </script>
+
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme" type="button">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        McAbe Software
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Apps</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-detail">
+      <div class="container">
+        <a href="index.html" class="back-link">All apps</a>
+
+        <div class="app-detail-head">
+          <div class="icon"><img src="assets/icons/canasta5game.png" alt="Canasta 5 app icon"></div>
+          <div class="titles">
+            <h1>Canasta 5</h1>
+            <span class="tag">Coming Soon</span>
+          </div>
+        </div>
+
+        <p class="lede">Play 5-deck Canasta on your phone — anytime, anywhere. Sit down with a virtual partner against two computer opponents.</p>
+
+        <h2>The Canasta you know, in your pocket</h2>
+        <p>4-player, 5-deck partner Canasta with all the rules your family already plays by. Deal, draw, meld, and go out — the app keeps the table tidy and the rules honest so you can just enjoy the game.</p>
+        <p>Designed for real Canasta players, not a generic card-game shell. The melds, the canastas, the Red 3 bonuses, the going-out logic — all of it works the way it works at the kitchen table.</p>
+
+        <h3>Play your way</h3>
+        <ul>
+          <li>Solo against three computer opponents with a smart partner</li>
+          <li>Configurable winning score (default 8500)</li>
+        </ul>
+
+        <h3>Built for real Canasta</h3>
+        <ul>
+          <li>Full 4-player, 5-deck partner rules</li>
+          <li>Clean and mixed canastas, Seven canastas, Wild canastas</li>
+          <li>Red 3 bonuses with threshold scaling, Black 3 penalties, going-out bonus</li>
+          <li>Automatic meld validation so the game stays fair</li>
+          <li>Round history with full per-team breakdowns</li>
+        </ul>
+
+        <h3>Polished for your table</h3>
+        <ul>
+          <li>Tap-friendly card layout that stays readable across the table</li>
+          <li>Game state persists between sessions — close mid-hand and pick up exactly where you left off</li>
+          <li>Screen stays awake during play</li>
+          <li>Light and dark themes</li>
+        </ul>
+
+        <p>Whether you're waiting at the airport or just can't get four players together, Canasta 5 brings the game to you.</p>
+
+        <h2>Screenshots</h2>
+        <div class="shots">
+          <img src="assets/screenshots/canasta5game/promo-01-home.png" alt="Canasta 5 home screen">
+          <img src="assets/screenshots/canasta5game/promo-02-newgame.png" alt="Canasta 5 new game setup">
+          <img src="assets/screenshots/canasta5game/promo-03-midgame.png" alt="Canasta 5 mid-game play">
+          <img src="assets/screenshots/canasta5game/promo-04-shoe.png" alt="Canasta 5 discard shoe">
+          <img src="assets/screenshots/canasta5game/promo-05-lategame.png" alt="Canasta 5 late-game play">
+          <img src="assets/screenshots/canasta5game/promo-06-summary.png" alt="Canasta 5 round summary">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year">2026</span> McAbe Software. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>
